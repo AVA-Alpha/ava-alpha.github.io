@@ -1,0 +1,120 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-8GTNBBL8LF"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-8GTNBBL8LF');
+		</script>
+		<meta charset="UTF-8">
+
+		{% seo %}
+
+		<!-- ใช้พิมพ์สมการและนับเลขสมการ -->
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+		    TeX: {
+		      equationNumbers: { autoNumber: "AMS" },
+		      tagSide: "right"
+		    },
+		    tex2jax: {
+		      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		      processEscapes: true
+		    }
+		  });
+		  MathJax.Hub.Register.StartupHook("TeX AMSmath Ready", function () {
+		    MathJax.InputJax.TeX.Stack.Item.AMSarray.Augment({
+		      clearTag() {
+		        if (!this.global.notags) {
+		          this.super(arguments).clearTag.call(this);
+		        }
+		      }
+		    });
+		  });
+		</script>
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({ TeX: { extensions: ["color.js"] }});
+		</script>
+		<script type="text/javascript" charset="utf-8"
+		  src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML">
+		</script>
+		<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+		<!-- Custom fonts for this template -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="theme-color" content="#157878">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	    <link href="https://fonts.googleapis.com/css2?family=Halant:wght@400;600&display=swap" rel="stylesheet"> 
+	    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	    
+	    <link href="../assets/css/clean-blog.min.css" rel="stylesheet">
+	    <link href="../assets/css/custom.css" rel="stylesheet">
+	    <link href="../assets/fontawesome-free/css/all.css" rel="stylesheet">
+
+	</head>
+</html>
+
+<body>
+	<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a href="{{ site.url }}" class="navbar-brand d-flex align-items-center">
+          <strong id="navTitle" class="nav-title">{{ site.title }}</strong>
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ site.facebook_link }}">Facebook<i class="fa fa-facebook"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ site.github_link }}">Github<i class="fa fa-github"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Page Header -->
+  <!-- <header class="masthead" style="background-image: url('{{page.img_header}}')"> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-12 mx-auto">
+          <div class="post-heading">
+            <h1 style="font-family: 'Mitr', sans-serif;">{{page.title}}</h1>
+            <h2 class="subheading" style="font-family: 'Mitr', sans-serif;">{{page.sub_title}}</h2>
+            <span>
+			{% for tag in page.tags%}
+				<a href="#" class="badge badge-primary" style="font-family: 'Mitr', sans-serif;" id="{{tag}}">{{tag}}</a>
+				<script type="text/javascript">document.getElementById("{{tag}}").style.backgroundColor = tag_color['{{tag}}'];</script>
+			{% endfor %}
+			</span>
+            <!-- <span class="meta">{{page.date | date: "%-d %B %Y" }}</span> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+		<!-- Content จากแต่ละ page จมาลงส่วนนี้ -->
+		<main id="content" class="main-content" role="main" style="text-align: justify; font-size: 15pt; color: black; line-height: 1.8;font-family: 'Sarabun', sans-serif;">
+		  {{ content }}
+		</main>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="../assets/js/clean-blog.min.js"></script>
+</body>
+</html>
